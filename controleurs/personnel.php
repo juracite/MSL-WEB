@@ -7,6 +7,7 @@ class personnel extends Controller{
         $b['perso_password'] = $this->Personnels->getPersonnelPassword();
         $this->set($b);
 
+
         if(isset($_POST['username']) && isset($_POST['password'])){
 						$username_user = $_POST['username'];
 						$password_user = md5($_POST['password']);
@@ -18,13 +19,15 @@ class personnel extends Controller{
 							}
 							elseif($username == $username_user) {
 								if($password_user == $b['perso_password'][$key]){
-                                    $id_con = $this->Personnels->getPersonnelConnectionId($key);
+
+                                    //Dans la BDD il y a un id 0 en plus, donc $key-1 pour retrouver le bon salarie par rapport à la bdd et non par rapport à la liste
+                                    $id_con = $this->Personnels->getPersonnelConnectionId($key-1);
 
                                     setcookie('id_con', $id_con[0], (time() + 3600), "/");
-                                    setcookie('id_user', $key, (time() + 3600), "/");
+                                    setcookie('id_user', $key-1, (time() + 3600), "/");
                                     $c['id_con'] = $id_con;
 
-                                    $c['message'] = 'Connecté, redirection vers la page d\'administration...';
+                                    $c['message'] = 'Connecté, redirection vers la page d\'administration... ';
 
                                     $this->set($c);
 								}

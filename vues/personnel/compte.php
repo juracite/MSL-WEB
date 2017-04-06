@@ -6,7 +6,7 @@
 <div class="row row-perso animated fadeIn">
 	<figure class="snip1344"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample1.jpg" alt="profile-sample1" class="background"/><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample1.jpg" alt="profile-sample1" class="profile"/>
 		<figcaption>
-		<h3>Ursula Gurnmeister<span>Engineer</span></h3>
+		<h3><?php echo $nom_prenom_user[0]; ?><span>Engineer</span></h3>
 		<div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a><a href="#"> <i class="ion-social-twitter-outline"></i></a><a href="#"> <i class="ion-social-vimeo-outline"></i></a></div>
 		</figcaption>
 	</figure>
