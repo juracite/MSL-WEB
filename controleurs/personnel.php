@@ -21,10 +21,10 @@ class personnel extends Controller{
 								if($password_user == $b['perso_password'][$key]){
 
                                     //Dans la BDD il y a un id 0 en plus, donc $key-1 pour retrouver le bon salarie par rapport à la bdd et non par rapport à la liste
-                                    $id_con = $this->Personnels->getPersonnelConnectionId($key-1);
+                                    $id_con = $this->Personnels->getPersonnelConnectionId($key);
 
                                     setcookie('id_con', $id_con[0], (time() + 3600), "/");
-                                    setcookie('id_user', $key-1, (time() + 3600), "/");
+                                    setcookie('id_user', $key, (time() + 3600), "/");
                                     $c['id_con'] = $id_con;
 
                                     $c['message'] = 'Connecté, redirection vers la page d\'administration... ';
