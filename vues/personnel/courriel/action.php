@@ -76,8 +76,8 @@ case "repondre": //3eme cas : on veut répondre à un mp reçu
 <?php
             echo '<input type="hidden" name="to" value="'. $_POST['dest_login'] .'">';
 ?>
-            <input type="submit" name="action" value="envoyer" class="btn btn-primary" />
-            <input type="reset" name="Effacer" value="Effacer" class="btn btn-danger" />
+            <input type="submit" name="action" value="Envoyer" class="btn btn-primary" />
+            <input type="reset" name="Effacer" value="Vider" class="btn btn-danger" />
         </p>
     </form>
 <?php
@@ -102,8 +102,8 @@ case "nouveau": //2eme cas : on veut poster un nouveau mp
     <br /><br />
     <textarea cols="80" rows="8" name="message" id="textarea" class="form-control" placeholder="Message à envoyer"></textarea>
     <br />
-    <input type="submit" name="action" value="envoyer" class="btn btn-primary" />
-    <input type="reset" name="Effacer" value="Effacer" class="btn btn-danger" /></p>
+    <input type="submit" name="action" value="Envoyer" class="btn btn-primary" />
+    <input type="reset" name="Effacer" value="Vider" class="btn btn-danger" /></p>
     </form>
 
 <?php

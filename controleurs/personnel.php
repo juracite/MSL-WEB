@@ -145,6 +145,34 @@ class personnel extends Controller{
             header("Location: connect");
         }
     }
+
+    function param(){
+        $this->loadModel('Personnels');
+        
+        if(isset($_COOKIE['id_con']) && isset($_COOKIE['id_user'])){
+            $id_user = $_COOKIE['id_user'];
+            $id_con_user = $_COOKIE['id_con'];
+            $id_con = $this->Personnels->getPersonnelConnectionId($id_user);
+            $personnel_info = $this->Personnels->getInformationPersonnel($id_con_user);
+            $personnel_vehicule = $this->Personnels->getVehiculePersonnel($id_con_user);
+            $personnel_vehicule_info = $this->Personnels->getVehiculeAllPersonnel($id_con_user);
+            if($id_con_user == $id_con[0]){
+                $a['nom_prenom_user'] = $this->Personnels->getPersonnelNomPrenomById($id_con[0]);
+                $a['infos_user'] = $personnel_info;
+                $a['user_vehicule'] = $personnel_vehicule;
+                $a['user_vehicule_infos'] = $personnel_vehicule_info;
+                $this->set($a);
+                $this->render('param/general');
+            }
+            else{
+                echo 'Erreur les informations sont erronées';
+            }
+        }
+        if(!isset($_COOKIE['id_con']) || !isset($_COOKIE['id_user'])){
+            header("Location: connect");
+        }
+    }
+
     function test(){
         $this->loadModel('Test');
         $a = $this->Test->setImma();

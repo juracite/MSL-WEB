@@ -10,51 +10,50 @@
 </header>
 <div class="container-courriel animated fadeIn">
 	<div class="messagerie-box">
-		<table class="table table-inverse">
-			<tr>
-				<th><strong><i class="ion-android-checkbox-outline-blank"> Lu / <i class="ion-android-checkbox-blank"> Non lu</strong></th>
-				<th><strong>Titre</strong></th>
-				<th><strong>Expéditeur</strong></th>
-				<th><strong>Date</strong></th>
-				<th><strong>Suppression</strong></th>
-			</tr>
+		
 
 			<?php
+
+			
 				//On boucle et on remplit le tableau
-				if (count($messages_info)>0)
-				{
-					foreach ($messages_info as $data)
+				if($messages_info){
+
+					include "courriel/table.html";
+					if (count($messages_info)>0)
 					{
-						echo'<tr>';
-						//Mp jamais lu, on affiche l'icone en question
-						if($data['mp_lu'] == 0)
+						foreach ($messages_info as $data)
 						{
-						echo'<td><i class="ion-android-checkbox-blank"> <span id="new_msg">Nouveau !</span></td>';
-						}
-						else //sinon une autre icone
-						{
-						echo'<td><i class="ion-android-checkbox-outline-blank"></td>';
-						}
-						echo'<td id="mp_titre">
-						<form id="form-hidden" method="post" action="courriel"><button type="submit" name="action" value="consulter" class="btn-link" />
-						<input type="hidden" name="id" value="'.$data['mp_id'].'">
-						'.stripslashes(htmlspecialchars($data['mp_titre'])).'</a></td>
-						<td id="mp_expediteur">
-						<button type="submit" name="id_salarie" value="'.$data['id_salarie'].'" class="btn-link" />
-						'.stripslashes(htmlspecialchars($data['login'])).'</form></td>
-						<td id="mp_time">'.date('H\hi \l\e d M Y',$data['mp_time']).'</td>
-						<td>
-						<form id="form-hidden" method="post" action="courriel">
-						<button type="submit" name="action" value="supprimer" class="btn-link" />
-						<input type="hidden" name="id" value="'.$data['mp_id'].'">
-						<i id="supp" class="ion-android-close"></form></td></tr>';
-					} //Fin de la boucle
-					echo '</table>';
+							echo'<tr>';
+							//Mp jamais lu, on affiche l'icone en question
+							if($data['mp_lu'] == 0)
+							{
+							echo'<td><i class="ion-android-checkbox-blank"> <span id="new_msg">Nouveau !</span></td>';
+							}
+							else //sinon une autre icone
+							{
+							echo'<td><i class="ion-android-checkbox-outline-blank"></td>';
+							}
+							echo'<td id="mp_titre">
+							<form id="form-hidden" method="post" action="courriel"><button type="submit" name="action" value="consulter" class="btn-link" />
+							<input type="hidden" name="id" value="'.$data['mp_id'].'">
+							'.stripslashes(htmlspecialchars($data['mp_titre'])).'</a></td>
+							<td id="mp_expediteur">
+							<button type="submit" name="id_salarie" value="'.$data['id_salarie'].'" class="btn-link" />
+							'.stripslashes(htmlspecialchars($data['login'])).'</form></td>
+							<td id="mp_time">'.date('H\hi \l\e d M Y',$data['mp_time']).'</td>
+							<td>
+							<form id="form-hidden" method="post" action="courriel">
+							<button type="submit" name="action" value="supprimer" class="btn-link" />
+							<input type="hidden" name="id" value="'.$data['mp_id'].'">
+							<i id="supp" class="ion-android-close"></form></td></tr>';
+						} //Fin de la boucle
+						echo '</table>';
+					}
+					
 				}
 				else{
-					echo'<p>Vous n avez aucun message privé pour l instant, cliquez
-			<a href="./index.php">ici</a> pour revenir à la page d index</p>';
-				}
+						echo'<p>Vous n avez aucun message privé pour l\'instant.';
+					}
 			?>
 			<form id="form-hidden" method="post" action="courriel">
 				<button type="submit" class="btn btn-primary" name="action" value="nouveau">Nouveau</button>

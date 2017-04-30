@@ -123,5 +123,31 @@
             $query->CloseCursor();
             return $data;
         }
+        function getVehiculePersonnel($id_con){
+            include(ROOT.'core/modele/dbconnect.php');
+            $result = $dbh->query('SELECT * from salarie WHERE id_con="'.$id_con.'"');
+            $row = $result->fetch();
+            $id_salarie = $row[0];
+
+            $result = $dbh->query('SELECT * from vehicules WHERE id_salarie="'.$id_salarie.'"');
+            $row = $result->fetch();
+            $id_vehicule = $row[0];
+
+            $result = $dbh->query('SELECT * from marque_modele WHERE id="'.$id_vehicule.'"');
+            $row = $result->fetch();
+            
+            return $row;
+        }
+        function getVehiculeAllPersonnel($id_con){
+            include(ROOT.'core/modele/dbconnect.php');
+            $result = $dbh->query('SELECT * from salarie WHERE id_con="'.$id_con.'"');
+            $row = $result->fetch();
+            $id_salarie = $row[0];
+
+            $result = $dbh->query('SELECT * from vehicules WHERE id_salarie="'.$id_salarie.'"');
+            $row = $result->fetch();
+            
+            return $row;
+        }
     }
 ?>

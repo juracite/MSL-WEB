@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MSL - Gestionnaire</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="../vues/app/css/navbar-perso.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">   
+ <link rel="stylesheet" href="../vues/app/css/navbar-perso.css">
     
     <link rel="stylesheet" type="text/css" href="../vues/app/css/vicons-font.css" />
     <link rel="stylesheet" type="text/css" href="../vues/app/css/buttons.css" />
@@ -37,7 +38,7 @@
 			</a>
 		</li>
 		<li>
-			<a class='expandable' href='#' title='APIs'>
+			<a class='expandable' href='../personnel/param' title='APIs'>
 				<span class='glyphicon glyphicon-wrench collapsed-element'></span>
 				<span class='expanded-element'>API</span>
 			</a>
@@ -92,10 +93,14 @@ $(document).ready(function () {
     }else if(window.location.href.indexOf("courriel") > -1) {
        $(".sidebar>ul>li.active").removeClass('active');
 	   $(".sidebar>ul>li:eq(2)").addClass('active');
+    }else if(window.location.href.indexOf("param") > -1) {	
+       $(".sidebar>ul>li.active").removeClass('active');
+	   $(".sidebar>ul>li:eq(1)").addClass('active');
     }
 });
 </script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>	 
+	<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>	 
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="Hello World"></script>
 </html>

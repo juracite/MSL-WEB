@@ -8,7 +8,7 @@
     if(isset($_GET['p']) && !empty($_GET['p'])){
         $params = explode('/', $_GET['p']);
     } else {
-        echo 'Erreur 405';
+        header( "refresh:0;url=personnel/connect" ); 
         return false;
     }
     $controller = $params[0];

@@ -1,4 +1,5 @@
 <div class="wrapper animated fadeIn">
+			<h1 class="title"></h1>
 			<form class="form-signin" action="" method="POST">
 				<img id="icon_connect" src="../vues/app/img/mascotte.png" />
 				<h2 class="form-signin-heading">Connexion<br><small>Page d'administration</small></h2>
