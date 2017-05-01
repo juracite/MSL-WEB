@@ -1,15 +1,21 @@
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="personal-info">
+  <a href="./change_prof">
+    <div class="profile-pic" style=<?php if($user_avatar){echo "\"background-image: url('../vues/app/img/utilisateurs/" . $infos_user[9] ."/" . $user_avatar[0][0] ."')\"";} else {echo "\"background-image: url('../vues/app/img/defaut/inconnu.jpg')\"";} ?>>
+
+      <span class="glyphicon glyphicon-camera"></span>
+      <span>Changer</span>
+
+    </div>
+  </a>
+  <h1><?php echo $nom_prenom_user[0]; ?></h1>
+</div>
+
 <div class="container">
   <section class="param-infos">
     <div class="wrapper1">
 	<div class="header">
     <h1 class="title">Informations générales</h1>
-     <i class="fa fa-info"></i>
 	</div>
-  <div class="personal-info col-xs-12">
-  	<img src="../vues/app/img/defaut/inconnu.jpg" alt=""/>
-    <h1 class="col-xs-12"><?php echo $nom_prenom_user[0]; ?></h1>
-  </div>
   <div class="other-info">
   	<div class="service"><h3><b>Service : </b><i><?php echo $infos_user[4];?></i></h3></div>
     <div class="mail"><h3><b>Email: </b><i><?php echo $infos_user[5];?></i></h3></div>

@@ -1,0 +1,11 @@
+<form enctype="multipart/form-data" action="" method="post" class="form-inline">
+      <!-- MAX_FILE_SIZE doit précéder le champ input de type file -->
+      <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+      <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
+      <div class="form-group">
+        <input name="avatar" type="file" class="form-control" />
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Changer d'image" class="btn btn-info" />
+      </div>
+    </form>

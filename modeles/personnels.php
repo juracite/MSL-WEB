@@ -85,8 +85,8 @@
             include(ROOT.'core/modele/dbconnect.php');
             $result = $dbh->query('SELECT * from salarie WHERE id_con="'.$id_con.'"');
             $row = $result->fetch();
-            $login_user = $row[8];
-            $id_con = $row[10];
+            $login_user = $row[9];
+            $id_con = $row[12];
             $new_id_con = md5($pass + $login_user);
             $dbh->exec("UPDATE salarie SET password=md5('". $pass ."'), id_con='" . $new_id_con . "' WHERE id_con='".$id_con."'");
             $returnit = $login_user+" / "+$pass;
@@ -148,6 +148,28 @@
             $row = $result->fetch();
             
             return $row;
+        }
+
+        function updatePersonnelAvatar($id_con, $fichier) {  
+            include(ROOT.'core/modele/dbconnect.php');
+            $result = $dbh->query('SELECT * from salarie WHERE id_con="'.$id_con.'"');
+            $row = $result->fetch();
+            $id_con = $row[12];
+            $dbh->exec("UPDATE salarie SET avatar_file_name='" . $fichier . "' WHERE id_con='".$id_con."'");
+            return true;
+        }
+
+        function getAvatarPersonnel($id_con){
+            include(ROOT.'core/modele/dbconnect.php');
+            $query=$dbh->prepare('SELECT avatar_file_name FROM salarie WHERE id_con="'.$id_con.'"');
+            $query->execute();
+            $data = $query->fetchAll();
+            $query->CloseCursor();
+            if($data[0][0] == "c21f969b5f03d33d43e04f8f136e7682"){
+                return false;
+            } else {
+                return $data;
+            }
         }
     }
 ?>

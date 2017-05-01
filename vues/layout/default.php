@@ -96,6 +96,9 @@ $(document).ready(function () {
     }else if(window.location.href.indexOf("param") > -1) {	
        $(".sidebar>ul>li.active").removeClass('active');
 	   $(".sidebar>ul>li:eq(1)").addClass('active');
+    }else if(window.location.href.indexOf("change_prof") > -1) {	
+       $(".sidebar>ul>li.active").removeClass('active');
+	   $(".sidebar>ul>li:eq(1)").addClass('active');
     }
 });
 </script>

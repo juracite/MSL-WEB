@@ -682,13 +682,60 @@ div.table-title {
     text-align: center;
 }
 
-.personal-info img {
-    width: 120px;
-    height: 120px;
+.personal-info .profile-pic {
     border-radius: 50%;
-    border: 3px solid rgba(0, 0, 0, .7);
-    ;
+    height: 120px;
+    width: 120px;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    vertical-align: middle;
+    text-align: center;
+    color: transparent;
+    transition: all .3s ease;
+    text-decoration: none;
+    
     display: inline-block;
+}
+.personal-info .profile-pic-change {
+    border-radius: 50%;
+    height: 250px;
+    width: 250px;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    vertical-align: middle;
+    text-align: center;
+    color: transparent;
+    transition: all .3s ease;
+    text-decoration: none;
+    
+    display: inline-block;
+}
+
+.personal-info input[type=file] {
+    display: inline-block;
+}
+.personal-info .form-inline {
+    margin-top: 2em;
+}
+
+.profile-pic span {
+    display: inline-block;
+    padding-top: 3.5em;
+    padding-bottom: 3.5em;
+}
+
+.personal-info .profile-pic:hover {
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
+
+    transform: scale(1.1);
+
+    cursor: pointer;
 }
 
 .personal-info h1 {
@@ -700,6 +747,9 @@ div.table-title {
     margin-left: 25px;
     color: rgba(0, 0, 0, .7);
     font-weight: 300;
+
+    color: white;
+    margin-top: 39.5px;
 }
 
 .personal-info h1 span {
