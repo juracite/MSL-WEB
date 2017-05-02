@@ -645,8 +645,8 @@ div.table-title {
 }
 
 .wrapper1 {
-    width: 400px;
-    height: 350px;
+    width: 500px;
+    height: 600px;
     background: #eaeaea;
     display: inline-block;
     margin-top: 20px;
@@ -695,6 +695,9 @@ div.table-title {
     transition: all .3s ease;
     text-decoration: none;
     
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+
     display: inline-block;
 }
 .personal-info .profile-pic-change {
@@ -710,6 +713,9 @@ div.table-title {
     transition: all .3s ease;
     text-decoration: none;
     
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+
     display: inline-block;
 }
 
@@ -766,6 +772,16 @@ div.table-title {
     margin-top: 5px;
     text-align: center;
     position: relative;
+}
+
+.other-info .changer-info {
+    margin-top: 1.5em;
+    margin-right: 70%;
+    margin-left: 25%;
+}
+.other-info .input-pers {
+    max-width: 50%;
+    display: inline-block;
 }
 
 .phone,
