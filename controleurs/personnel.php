@@ -66,28 +66,28 @@ class personnel extends Controller{
             //echo 'error';
         }
     }
-    function compte(){
-        $this->loadModel('Personnels');
-        
-        if(isset($_COOKIE['id_con']) && isset($_COOKIE['id_user'])){
-            $id_user = $_COOKIE['id_user'];
-            $id_con_user = $_COOKIE['id_con'];
-            $id_con = $this->Personnels->getPersonnelConnectionId($id_user);
-            $personnel_info = $this->Personnels->getInformationPersonnel($id_con_user);
-            if($id_con_user == $id_con[0]){
-                $a['nom_prenom_user'] = $this->Personnels->getPersonnelNomPrenomById($id_con[0]);
-                $a['infos_user'] = $personnel_info;
-                $this->set($a);
-                $this->render('compte');
-            }
-            else{
-                echo 'Erreur les informations sont erronées';
-            }
-        }
-        if(!isset($_COOKIE['id_con']) or !isset($_COOKIE['id_user'])){
-            header("Location: connect");
-        }
-    }
+//    function compte(){
+//        $this->loadModel('Personnels');
+//        
+//        if(isset($_COOKIE['id_con']) && isset($_COOKIE['id_user'])){
+//            $id_user = $_COOKIE['id_user'];
+//            $id_con_user = $_COOKIE['id_con'];
+//            $id_con = $this->Personnels->getPersonnelConnectionId($id_user);
+//            $personnel_info = $this->Personnels->getInformationPersonnel($id_con_user);
+//            if($id_con_user == $id_con[0]){
+//                $a['nom_prenom_user'] = $this->Personnels->getPersonnelNomPrenomById($id_con[0]);
+//                $a['infos_user'] = $personnel_info;
+//                $this->set($a);
+//                $this->render('compte');
+//            }
+//            else{
+//                echo 'Erreur les informations sont erronées';
+//            }
+//        }
+//        if(!isset($_COOKIE['id_con']) or !isset($_COOKIE['id_user'])){
+//            header("Location: connect");
+//        }
+//    }
     function disconnect(){
         if (isset($_COOKIE['id_con']) or isset($_COOKIE['id_user'])) {
             unset($_COOKIE['id_con']);
@@ -158,11 +158,29 @@ class personnel extends Controller{
             $personnel_vehicule_info = $this->Personnels->getVehiculeAllPersonnel($id_con_user);
             $personnel_avatar = $this->Personnels->getAvatarPersonnel($id_con_user);
             if($id_con_user == $id_con[0]){
-                $a['nom_prenom_user'] = $this->Personnels->getPersonnelNomPrenomById($id_con[0]);
+                $a['nom_prenom_user'] = $this->Personnels->getPersonnelNomPrenomById($id_con_user);
                 $a['infos_user'] = $personnel_info;
                 $a['user_vehicule'] = $personnel_vehicule;
                 $a['user_vehicule_infos'] = $personnel_vehicule_info;
                 $a['user_avatar'] = $personnel_avatar;
+                
+                if(isset($_POST['change-ok-fini'])){
+                    if($_POST['mdp'] != '' && strlen($_POST['mdp']) > 5){
+                        $newMdp = $_POST['mdp'];
+                        $this->Personnels->updatePersonnelPassword($id_con_user, $newMdp);
+                        if($_POST['email'] != ''){
+                            $newEmail = $_POST['email'];
+                            $this->Personnels->updatePersonnelEmail($id_con_user, $newEmail);
+                            $a['status'] = 'Mot de passe et Email changés avec succès !';
+                        } else {
+                            $a['status'] = 'Mot de passe changé avec succès !';
+                        }
+                    }
+                    else{
+                        $a['status'] = '<b><span style="color: red;">Erreur</span> : Mot de passe incomplet (minimum <span style="color: red;">5</span> charactères)</b>';
+                    }
+                }
+                
                 $this->set($a);
                 $this->render('param/general');
             }
@@ -242,10 +260,39 @@ class personnel extends Controller{
         }
     }
     
-    function test(){
-        $this->loadModel('Test');
-        $a = $this->Test->setImma();
-        var_dump($a);
+    function entretien(){
+        $this->loadModel('Personnels');
+        if(isset($_COOKIE['id_con']) && isset($_COOKIE['id_user'])){
+            $id_user = $_COOKIE['id_user'];
+            $id_con_user = $_COOKIE['id_con'];
+            $id_con = $this->Personnels->getPersonnelConnectionId($id_user);
+            if($id_con_user == $id_con[0]){
+                if(isset($_POST['action']) && isset($_POST['id'])){
+                    if($_POST['action'] == 'supprimer'){
+                        $id = $_POST['id'];
+                        $this->Personnels->deleteRdvEntretien($id);
+                    }
+                }
+                $a['nom_prenom_user'] = $this->Personnels->getPersonnelNomPrenomById($id_con[0]);
+                $a['all_login_personnel'] = $this->Personnels->getAllPersonnelLogin();
+                $a['rdv_entretiens'] = $this->Personnels->getRdvEntretien();
+                $this->set($a);
+                $this->render('entretien');
+            }
+            else{
+                echo 'Erreur les informations sont erronées';
+            }
+        }
+        if(!isset($_COOKIE['id_con']) or !isset($_COOKIE['id_user'])){
+            header("Location: connect");
+            //echo 'error';
+        }
     }
+    
+//    function test(){
+//        $this->loadModel('Test');
+//        $a = $this->Test->setImma();
+//        var_dump($a);
+//    }
 }
 ?>

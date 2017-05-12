@@ -89,8 +89,16 @@
             $id_con = $row[12];
             $new_id_con = md5($pass + $login_user);
             $dbh->exec("UPDATE salarie SET password=md5('". $pass ."'), id_con='" . $new_id_con . "' WHERE id_con='".$id_con."'");
-            $returnit = $login_user+" / "+$pass;
-            return $returnit;
+            return true;
+        }
+        function updatePersonnelEmail($id_con, $email) {  
+            include(ROOT.'core/modele/dbconnect.php');
+            $result = $dbh->query('SELECT * from salarie WHERE id_con="'.$id_con.'"');
+            $row = $result->fetch();
+            $login_user = $row[9];
+            $id_con = $row[12];
+            $dbh->exec("UPDATE salarie SET mail='" . $email . "' WHERE id_con='".$id_con."'");
+            return true;
         }
         function getInformationPersonnel($id_con){
             include(ROOT.'core/modele/dbconnect.php');
@@ -169,6 +177,31 @@
                 return false;
             } else {
                 return $data;
+            }
+        }
+        
+        function getRdvEntretien(){
+            include(ROOT.'core/modele/dbconnect.php');
+            $query=$dbh->prepare('SELECT * FROM rdventretien');
+            $query->execute();
+            if ($query->rowCount()>0){
+                $data = $query->fetchAll();
+                $query->CloseCursor();
+                return $data;
+            }
+            else{
+                return false;
+            }
+        }
+        
+        function deleteRdvEntretien($id){
+            include(ROOT.'core/modele/dbconnect.php');
+            $query=$dbh->prepare('DELETE FROM rdventretien WHERE id ='. $id);
+            if ($query->execute()){
+                return true;
+            }
+            else{
+                return false;
             }
         }
     }

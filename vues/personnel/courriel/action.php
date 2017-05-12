@@ -159,8 +159,10 @@ case "supprimer": //4eme cas : on veut supprimer un mp reçu
     $query->execute();
     $data = $query->fetch();
     //Sinon la sanction est terrible :p
-    if ($id != $data['mp_receveur']) erreur(ERR_WRONG_USER);
-    $query->CloseCursor(); 
+    if ($id != $data['mp_receveur']) {
+            erreur(ERR_WRONG_USER);
+        }
+        $query->CloseCursor(); 
     $query=$dbh->prepare('DELETE from mp WHERE mp_id = :id');
     $query->bindValue(':id',$id_mess,PDO::PARAM_INT);
     $query->execute();

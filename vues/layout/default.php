@@ -26,7 +26,7 @@
     <![endif]-->
 </head>
 <body class="segmenter">
-    <nav class='sidebar sidebar-menu-collapsed animated fadeIn'>
+    <nav class='sidebar sidebar-menu-expanded animated fadeIn'>
 	<a href='#' id='justify-icon'>
 		<span class='glyphicon glyphicon-align-justify'></span>
 	</a>
@@ -38,9 +38,9 @@
 			</a>
 		</li>
 		<li>
-			<a class='expandable' href='../personnel/param' title='APIs'>
+			<a class='expandable' href='../personnel/param' title='Parametres'>
 				<span class='glyphicon glyphicon-wrench collapsed-element'></span>
-				<span class='expanded-element'>API</span>
+				<span class='expanded-element'>Paramètres</span>
 			</a>
 		</li>
 		<li>
@@ -50,11 +50,17 @@
 			</a>
 		</li>
 		<li>
+			<a class='expandable' href='../personnel/entretien' title='Entretien'>
+				<span class='glyphicon glyphicon-list collapsed-element'></span>
+				<span class='expanded-element'>Les entretiens</span>
+			</a>
+		</li>
+<!--		<li>
 			<a class='expandable' href='../personnel/compte' title='Compte'>
 				<span class='glyphicon glyphicon-user collapsed-element'></span>
 				<span class='expanded-element'><?php echo $nom_prenom_user[0]; ?></span>
 			</a>
-		</li>
+		</li>-->
 	</ul>
     <img id="icon_membre" src="../vues/app/img/mascotte.png" />
 </nav>
@@ -88,17 +94,25 @@
 	<script type="text/javascript">
 $(document).ready(function () {
     if(window.location.href.indexOf("compte") > -1) {
-       $(".sidebar>ul>li.active").removeClass('active');
-	   $(".sidebar>ul>li:eq(3)").addClass('active');
+        $(".sidebar>ul>li.active").removeClass('active');
+        $("body>nav").removeClass('animated');
+        $(".sidebar>ul>li:eq(4)").addClass('active');
     }else if(window.location.href.indexOf("courriel") > -1) {
-       $(".sidebar>ul>li.active").removeClass('active');
-	   $(".sidebar>ul>li:eq(2)").addClass('active');
+        $(".sidebar>ul>li.active").removeClass('active');
+        $("body>nav").removeClass('animated');
+	$(".sidebar>ul>li:eq(2)").addClass('active');
     }else if(window.location.href.indexOf("param") > -1) {	
-       $(".sidebar>ul>li.active").removeClass('active');
-	   $(".sidebar>ul>li:eq(1)").addClass('active');
+        $(".sidebar>ul>li.active").removeClass('active');
+        $("body>nav").removeClass('animated');
+	$(".sidebar>ul>li:eq(1)").addClass('active');
     }else if(window.location.href.indexOf("change_prof") > -1) {	
-       $(".sidebar>ul>li.active").removeClass('active');
-	   $(".sidebar>ul>li:eq(1)").addClass('active');
+        $(".sidebar>ul>li.active").removeClass('active');
+        $("body>nav").removeClass('animated');
+	$(".sidebar>ul>li:eq(1)").addClass('active');
+    }else if(window.location.href.indexOf("entretien") > -1) {	
+        $(".sidebar>ul>li.active").removeClass('active');
+        $("body>nav").removeClass('animated');
+	$(".sidebar>ul>li:eq(3)").addClass('active');
     }
 });
 </script>
